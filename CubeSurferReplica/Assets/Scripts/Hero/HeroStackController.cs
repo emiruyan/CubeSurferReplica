@@ -22,6 +22,13 @@ public class HeroStackController : MonoBehaviour
         UpdateLastBlockObject();
     }
 
+    public void DecreaseBlockStack(GameObject _gameObject)
+    {
+        _gameObject.transform.parent = null;//Nesnenin parent'ını null'a atadık
+        blockList.Remove(_gameObject);//blockList içerisinden kendisini sil 
+        UpdateLastBlockObject();
+    }
+
     private void UpdateLastBlockObject()
     {
         lastBlockObject = blockList[blockList.Count - 1];//Burada son cube'u almış oluyoruz

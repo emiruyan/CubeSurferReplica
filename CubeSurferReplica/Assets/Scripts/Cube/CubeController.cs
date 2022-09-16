@@ -20,7 +20,7 @@ public class CubeController : MonoBehaviour
         SetCubeRaycast();
     }
 
-    private void SetCubeRaycast()
+    private void SetCubeRaycast()//Raycast ile küpleri toplayacağımız fonksiyon
     {
         if (Physics.Raycast(transform.position,direction,out hit,1f))
         {
@@ -29,6 +29,17 @@ public class CubeController : MonoBehaviour
                 isStack = true;
                 _heroStackController.IncreaseBlockStack(gameObject);
             }
+
+            if (hit.transform.name == "ObstacleCube")//Çarptığımız nesnenin adı "ObstacelCube" ise;
+            {
+                _heroStackController.DecreaseBlockStack(gameObject);//heroStackController içindeki DecreaseBlockStack'i çalıştır.
+            }   
         }
+    }
+
+    private void SetDirection()
+    {
+        direction = Vector3.forward;
+        
     }
 }
